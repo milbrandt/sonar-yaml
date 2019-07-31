@@ -11,6 +11,9 @@ services:
     build:
       context: ..
       dockerfile: it/Dockerfile-auditor
+      args:
+        JDK_VERSION: ${JAVA_VERSION:-8}
+    image: auditor:${JAVA_VERSION:-8}
     links:
       - sonarqube
     command: /bin/bash /usr/src/myapp/it/audit.sh
